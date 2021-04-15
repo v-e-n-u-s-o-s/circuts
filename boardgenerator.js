@@ -1,24 +1,35 @@
 var maxboardsizexPROMPT = Number(prompt("Podaj szerokość planszy"));
 var maxboardsizeyPROMPT = Number(prompt("Podaj wysokość planszy"));
 
-function boardconstructor(maxboardsizex, maxboardsizey) {
-  for (var x = 1; x <= maxboardsizex; x++) {
-    for (var y = 1; y <= maxboardsizey; y++) {
-      var div = document.createElement("div");
-      var plus = document.createElement("img");
+if (
+  maxboardsizexPROMPT < 5 ||
+  maxboardsizeyPROMPT < 5 ||
+  maxboardsizexPROMPT > 25 ||
+  maxboardsizeyPROMPT > 25
+) {
+  alert("Za duża lub za mała plansza!");
+  var maxboardsizexPROMPT = Number(prompt("Podaj szerokość planszy"));
+  var maxboardsizeyPROMPT = Number(prompt("Podaj wysokość planszy"));
+}
 
+function boardconstructor(maxboardsizex, maxboardsizey) {
+  for (var y = 1; y <= maxboardsizey; y++) {
+    for (var x = 1; x <= maxboardsizex; x++) {
+      var div = document.createElement("div");
+      div.id = "cross";
+      div.dataset.x = x;
+      div.dataset.y = y;
+      div.dataset.z = 0;
+      div.style.heigth = "fit-content";
+
+      var plus = document.createElement("img");
       plus.src = "plusBLACK.svg";
       plus.style.maxWidth = "100%";
       plus.style.position = "relative";
-      plus.id = "plusBLACK" + x + y;
-
-      div.className = "cross" + x + y;
-      div.id = "cross" + x + y;
-      div.style.width = "fit-content";
-      div.appendChild(plus);
+      plus.id = "plusBLACK";
 
       document.getElementById("board").appendChild(div);
-      window["cross" + x + y] = [x, y];
+      div.appendChild(plus);
 
       $("img").hover(
         function () {
@@ -36,19 +47,3 @@ function boardconstructor(maxboardsizex, maxboardsizey) {
 }
 
 boardconstructor(maxboardsizexPROMPT, maxboardsizeyPROMPT);
-
-var blueturn = true;
-var orangeturn = false;
-$("img").click(function () {
-  if (blueturn == true) {
-    $(this).attr("src", "plusBLUE.svg");
-    orangeturn = true;
-    blueturn = false;
-    console.log(orangeturn, blueturn);
-  } else if (orangeturn == true) {
-    $(this).attr("src", "plusORANGE.svg");
-    blueturn = true;
-    orangeturn = false;
-    console.log(orangeturn, blueturn);
-  }
-});
