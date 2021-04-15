@@ -1,7 +1,8 @@
 .board {
   display: grid;
-  grid-template-columns: repeat(15, 1fr);
-  grid-template-rows: repeat(10, 1fr);
-  gap: 0px 0px;
-  border: 1px solid lightgray;
+  width: 50%;
+  overflow: hidden;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to top, #004cff, #ff9900);
 }
