@@ -1,13 +1,17 @@
 var maxboardsizexPROMPT;
 var maxboardsizeyPROMPT;
 
+//<div class="board" id="board"></div>
+
 function board_reporter() {
   maxboardsizexPROMPT = document.getElementById("width").value;
   maxboardsizeyPROMPT = document.getElementById("height").value;
   console.log(maxboardsizexPROMPT, maxboardsizeyPROMPT);
-  let container = document.getElementsByClassName("container")[0];
-  container.style.display = "none";
-  setTimeout(boardconstructor(maxboardsizexPROMPT, maxboardsizeyPROMPT), 500);
+  window.open("board.html");
+}
+
+function zenon() {
+  console.log("sztoka");
 }
 
 if (
@@ -38,8 +42,6 @@ function boardconstructor(maxboardsizex, maxboardsizey) {
   board.style.gridTemplateRows = "repeat(" + maxboardsizey + ", 1fr)";
   board.style.gridTemplateColumns = "repeat(" + maxboardsizex + ", 1fr)";
 }
-
-boardconstructor(maxboardsizexPROMPT, maxboardsizeyPROMPT);
 
 setInterval(() => {
   for (var y = 1; y <= maxboardsizeyPROMPT; y++) {

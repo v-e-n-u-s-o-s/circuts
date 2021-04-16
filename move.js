@@ -76,6 +76,8 @@ $("[id='cross']").click(function () {
     checkOrange.dataset.z = 3;
     this.dataset.z = 5;
     this.className = "plusBOTH";
+  } else if (orangeturn == true && z == 1 && checkOrange.dataset.z == 5) {
+  } else if (orangeturn == true && z == 1 && checkOrange.dataset.z == 5) {
   }
   if (blueturn == true && orangeturn == false) {
     document.querySelector("p").innerHTML = "Blue";
