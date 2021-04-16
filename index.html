@@ -1,15 +1,120 @@
 <html>
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Circuts - game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="board.css" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="move.js" defer></script>
+    <script src="board.js" defer></script>
+    <script src="animation.js"></script>
   </head>
   <body id="body">
-    <script src="boardgenerator.js" defer></script>
-    <script src="movement.js" defer></script>
+    <div class="container">
+      <div class="cover">
+        <div class="front"><h1>obwody</h1></div>
+        <div class="back">
+          <div class="autorzy"><h1>autorzy</h1></div>
+          <div class="Back-rules_menu"><h1>Zasady</h1></div>
+          <div class="Back-Pick-map_menu"><h1>Wybierz mapę</h1></div>
+          <div class="Back-Custom-map_menu"><h1>Stwórz mapę</h1></div>
+        </div>
+      </div>
+      <div class="menu">
+        <h1>menu</h1>
+        <center>
+          <div class="buttons">
+            <button
+              onclick="change('menu', 'Single-player_menu'), cover_change('autorzy', 'Back-rules_menu')"
+            >
+              Single-player
+            </button>
+            <button
+              onclick="change('menu', 'Multi-player_menu'), cover_change('autorzy', 'Back-rules_menu')"
+            >
+              Mulit-player
+            </button>
+          </div>
+        </center>
+      </div>
+
+      <div class="Single-player_menu">
+        <h1>Single-player</h1>
+        <center>
+          <div class="buttons">
+            <button
+              onclick="change('Single-player_menu', 'Pick-map_menu') ,cover_change('Back-rules_menu', 'Back-Pick-map_menu')"
+            >
+              Wybierz mapę
+            </button>
+            <button
+              onclick="change('Single-player_menu', 'Custom-map_menu') ,cover_change('Back-rules_menu', 'Back-Custom-map_menu')"
+            >
+              Własna mapa
+            </button>
+            <button
+              onclick="change('Single-player_menu', 'menu'),cover_change('Back-rules_menu', 'autorzy') "
+            >
+              powrót
+            </button>
+          </div>
+        </center>
+      </div>
+
+      <div class="Multi-player_menu">
+        <h1>Multi-player</h1>
+        <center>
+          <div class="buttons">
+            <button>..............</button>
+            <button
+              onclick="change('Multi-player_menu', 'menu',cover_change('Back-rules_menu', 'autorzy') )"
+            >
+              powrót
+            </button>
+          </div>
+        </center>
+      </div>
+
+      <div class="Pick-map_menu">
+        <h1>Wybierz mapę</h1>
+        <center>
+          <div class="buttons">
+            <button>..............</button>
+            <button>..............</button>
+            <button
+              onclick="change('Pick-map_menu', 'Single-player_menu'),cover_change('Back-Pick-map_menu', 'Back-rules_menu') "
+            >
+              powrót
+            </button>
+          </div>
+        </center>
+      </div>
+
+      <div class="Custom-map_menu">
+        <h1>Własna mapa</h1>
+        <center>
+          <div class="buttons">
+            <input
+              type="number"
+              placeholder="szerokość"
+              id="width"
+              pattern="[5-25]*"
+            />
+            <input type="number" placeholder="wysokość" id="height" />
+
+            <button onclick="board_reporter()">sztok</button>
+            <button
+              onclick="change('Custom-map_menu', 'Single-player_menu' ,cover_change('Back-Custom-map_menu', 'Back-rules_menu'))"
+            >
+              powrót
+            </button>
+          </div>
+        </center>
+      </div>
+    </div>
+
     <div class="board" id="board"></div>
   </body>
 </html>
