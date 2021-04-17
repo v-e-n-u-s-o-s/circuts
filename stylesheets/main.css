@@ -3,34 +3,34 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: auto;
 }
-.plusBLACK {
-  content: url("plusBLACK.svg");
+.bla {
+  content: url("../images/plusBLACK.svg");
   height: auto;
   margin: 0;
   padding: 0;
   max-width: 100%;
   position: relative;
 }
-.plusBLUE {
-  content: url("plusBLUE.svg");
+.blu {
+  content: url("../images/plusBLUE.svg");
   height: auto;
   margin: 0;
   padding: 0;
   max-width: 100%;
   position: relative;
 }
-.plusORANGE {
-  content: url("plusORANGE.svg");
+.ora {
+  content: url("../images/plusORANGE.svg");
   height: auto;
   margin: 0;
   padding: 0;
   max-width: 100%;
   position: relative;
 }
-.plusBOTH {
-  content: url("plusBOTH.svg");
+.bot {
+  content: url("../images/plusBOTH.svg");
   height: auto;
   margin: 0;
   padding: 0;

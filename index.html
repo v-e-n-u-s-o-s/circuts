@@ -4,12 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Circuts - game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="board.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="move.js" defer></script>
-    <script src="board.js" defer></script>
-    <script src="animation.js"></script>
+    <link rel="stylesheet" href="../stylesheets/main.css" />
+    <script src="../javascripts/size_passer.js"></script>
+    <script src="../javascripts/animation.js"></script>
   </head>
   <body id="body">
     <div class="container">
@@ -19,7 +17,16 @@
           <div class="autorzy"><h1>autorzy</h1></div>
           <div class="Back-rules_menu"><h1>Zasady</h1></div>
           <div class="Back-Pick-map_menu"><h1>Wybierz mapę</h1></div>
-          <div class="Back-Custom-map_menu"><h1>Stwórz mapę</h1></div>
+          <div class="Back-Custom-map_menu">
+            <h1>Zasady tworzenia mapy</h1>
+            <p>1. Maksymalna szarokość planszy wynosi: 35,</p>
+            <p>2. Maksymalna wysokość planszy wynosi: 35,</p>
+            <p>3. Wysokość nie może być większa od szerokości,</p>
+            <p>
+              4. Gdy trzeci warunek nie zostanie spełniony, wartości zostaną
+              wyrównane,
+            </p>
+          </div>
         </div>
       </div>
       <div class="menu">
@@ -96,15 +103,10 @@
         <h1>Własna mapa</h1>
         <center>
           <div class="buttons">
-            <input
-              type="number"
-              placeholder="szerokość"
-              id="width"
-              pattern="[5-25]*"
-            />
+            <input type="number" placeholder="szerokość" id="width" />
             <input type="number" placeholder="wysokość" id="height" />
 
-            <button onclick="board_reporter()">sztok</button>
+            <button onclick="board_reporter()" id="submit">sztok</button>
             <button
               onclick="change('Custom-map_menu', 'Single-player_menu' ,cover_change('Back-Custom-map_menu', 'Back-rules_menu'))"
             >
@@ -114,7 +116,5 @@
         </center>
       </div>
     </div>
-
-    
   </body>
 </html>
