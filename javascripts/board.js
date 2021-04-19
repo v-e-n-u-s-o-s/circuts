@@ -52,7 +52,7 @@ setInterval(() => {
   }
 }, 500);
 
-$("[id='resetButton']").click(function () {
+document.getElementById("resetButton").onclick = function () {
   for (var y = 1; y <= my; y++) {
     for (var x = 1; x <= mx; x++) {
       let c = document.querySelector(
@@ -64,6 +64,6 @@ $("[id='resetButton']").click(function () {
       orangeturn = false;
     }
   }
-});
+};
 
 bc(mx, my);

@@ -1,9 +1,6 @@
-var allBoxes = mx * my;
+var ab = mx * my;
 
-var upperspawn = 1;
-var bottomspawn = my;
-
-var turn = true;
+var t = true;
 
 function clearBoard() {
   for (var y = 1; y <= my; y++) {
@@ -13,73 +10,70 @@ function clearBoard() {
       );
       c.dataset.z = 0;
       c.className = "bla";
-      turn = true;
+      t = true;
     }
   }
 }
 
-$("[id='c']").click(function () {
+function c() {
   var x = this.dataset.x;
   var y = this.dataset.y;
   var z = this.dataset.z;
 
-  var y1 = parseInt(y) + 1;
-  var y_1 = parseInt(y) - 1;
-
-  var checkBlue = document.querySelector(
-    "#c[data-x='" + x + "'][data-y='" + y1 + "']"
+  var cb = document.querySelector(
+    "#c[data-x='" + x + "'][data-y='" + (parseInt(y) + 1) + "']"
   );
 
-  var checkOrange = document.querySelector(
-    "#c[data-x='" + x + "'][data-y='" + y_1 + "']"
+  var co = document.querySelector(
+    "#c[data-x='" + x + "'][data-y='" + (parseInt(y) - 1) + "']"
   );
-
-  if (turn == true && y == bottomspawn && z == 0) {
-    turn = false;
+  if (t) {
+  } else if (!t) {
+  }
+  if (t == true && y == my && z == 0) {
+    t = false;
     this.className = "blu";
     this.dataset.z = 1;
-  } else if (turn == false && y == upperspawn && z == 0) {
-    turn = true;
+  } else if (t == false && y == 1 && z == 0) {
+    t = true;
     this.dataset.z = 2;
     this.className = "ora";
-  } else if (turn == true && z == 0 && checkBlue.dataset.z == 1) {
-    turn = false;
+  } else if (t == true && z == 0 && cb.dataset.z == 1) {
+    t = false;
     this.className = "blu";
     this.dataset.z = 1;
-  } else if (turn == false && z == 0 && checkOrange.dataset.z == 2) {
-    turn = true;
+  } else if (t == false && z == 0 && co.dataset.z == 2) {
+    t = true;
     this.dataset.z = 2;
     this.className = "ora";
-  } else if (turn == true && z == 2 && checkBlue.dataset.z == 1) {
-    turn = false;
+  } else if (t == true && z == 2 && cb.dataset.z == 1) {
+    t = false;
     this.dataset.z = 3;
     this.className = "bot";
-  } else if (turn == false && z == 1 && checkOrange.dataset.z == 2) {
-    turn = true;
+  } else if (t == false && z == 1 && co.dataset.z == 2) {
+    t = true;
     this.dataset.z = 3;
     this.className = "bot";
-  } else if (turn == true && z == 2 && checkBlue.dataset.z == 3) {
-    turn = false;
-    checkBlue.dataset.z = 3;
+  } else if (t == true && z == 2 && cb.dataset.z == 3) {
+    t = false;
+    cb.dataset.z = 3;
     this.dataset.z = 4;
     this.className = "bot";
-  } else if (turn == false && z == 1 && checkOrange.dataset.z == 3) {
-    turn = true;
-    checkOrange.dataset.z = 3;
+  } else if (t == false && z == 1 && co.dataset.z == 3) {
+    t = true;
+    co.dataset.z = 3;
     this.dataset.z = 5;
     this.className = "bot";
-  } else if (turn == true && z == 2 && checkBlue.dataset.z == 4) {
-    turn = false;
-    checkBlue.dataset.z = 3;
+  } else if (t == true && z == 2 && cb.dataset.z == 4) {
+    t = false;
+    cb.dataset.z = 3;
     this.dataset.z = 4;
     this.className = "bot";
-  } else if (turn == false && z == 1 && checkOrange.dataset.z == 5) {
-    turn = true;
-    checkOrange.dataset.z = 3;
+  } else if (t == false && z == 1 && co.dataset.z == 5) {
+    t = true;
+    co.dataset.z = 3;
     this.dataset.z = 5;
     this.className = "bot";
-  } else if (turn == true && z == 1 && checkOrange.dataset.z == 5) {
-  } else if (turn == true && z == 1 && checkOrange.dataset.z == 5) {
   }
   if (
     (this.dataset.z == 1 || this.dataset.z == 4 || this.dataset.z == 3) &&
@@ -94,9 +88,13 @@ $("[id='c']").click(function () {
     clearBoard();
     alert("Orange won!");
   }
-  if (turn == false) {
+  if (t) {
     document.querySelector("p").innerHTML = "Blue";
-  } else if (turn == true) {
+  } else if (!t) {
     document.querySelector("p").innerHTML = "Orange";
   }
-});
+}
+
+for (i = 0; i <= ab; i++) {
+  document.querySelectorAll("#c")[i].onclick = c;
+}
