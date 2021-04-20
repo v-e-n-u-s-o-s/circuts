@@ -1,69 +1,84 @@
-var mx;
-var my;
-
-function sr() {
-  var parameters = location.search.substring(1).split("&");
-  var temp = parameters[0].split("=");
-  x = unescape(temp[1]);
-  temp = parameters[1].split("=");
-  y = unescape(temp[1]);
+function reciver() {
+  let p = location.search.substring(1).split("&");
+  let t = p[0].split("=");
+  x = unescape(t[1]);
+  t = p[1].split("=");
+  y = unescape(t[1]);
   return [x, y];
 }
 
-window.onload = sr();
+var [x, y] = [reciver()[0], reciver()[1]];
 
-mx = sr()[0];
-my = sr()[1];
+function reset() {
+  for (let a = 1; a <= y; a++) {
+    for (let b = 1; b <= x; b++) {
+      let selector = document.querySelector(
+        "#a[data-x='" + b + "'][data-y='" + a + "']"
+      );
+      selector.dataset.z = 0;
+      selector.className = "bla";
+      t = true;
+    }
+  }
+}
 
-function bc(bx, by) {
-  for (var y = 1; y <= by; y++) {
-    for (var x = 1; x <= bx; x++) {
-      var div = document.createElement("div");
-      div.id = "c";
+function generator(bx, by) {
+  for (let a = 1; a <= by; a++) {
+    for (let b = 1; b <= bx; b++) {
+      let div = document.createElement("div");
+      div.id = "a";
       div.className = "bla";
-      div.dataset.x = x;
-      div.dataset.y = y;
+      div.dataset.x = b;
+      div.dataset.y = a;
       div.dataset.z = 0;
-
       document.querySelector("#b").append(div);
     }
   }
-  var b = document.getElementById("b");
+  let b = document.getElementById("b");
   b.style.gridTemplateRows = "repeat(" + by + ", 1fr)";
   b.style.gridTemplateColumns = "repeat(" + bx + ", 1fr)";
 }
 
 setInterval(() => {
-  for (var y = 1; y <= my; y++) {
-    for (var x = 1; x <= mx; x++) {
-      let c = document.querySelector(
-        "#c[data-x='" + x + "'][data-y='" + y + "']"
+  for (let a = 1; a <= y; a++) {
+    for (let b = 1; b <= x; b++) {
+      let selector = document.querySelector(
+        "#a[data-x='" + b + "'][data-y='" + a + "']"
       );
-      if (c.dataset.z == 0) {
-        c.className = "bla";
-      } else if (c.dataset.z == 1) {
-        c.className = "blu";
-      } else if (c.dataset.z == 2) {
-        c.className = "ora";
-      } else if (c.dataset.z == 3 || c.dataset.z == 4 || c.dataset.z == 4) {
-        c.className = "bot";
+      if (selector.dataset.z == 0) {
+        selector.className = "bla";
+      } else if (selector.dataset.z == 1) {
+        selector.className = "blu";
+      } else if (selector.dataset.z == 2) {
+        selector.className = "ora";
+      } else if (
+        selector.dataset.z == 3 ||
+        selector.dataset.z == 4 ||
+        selector.dataset.z == 4
+      ) {
+        selector.className = "bot";
+      }
+      if (
+        (selector.dataset.z == 1 ||
+          selector.dataset.z == 4 ||
+          selector.dataset.z == 3) &&
+        selector.dataset.y == 1
+      ) {
+        alert("Blue won!");
+        reset();
+      } else if (
+        (selector.dataset.z == 2 ||
+          selector.dataset.z == 5 ||
+          selector.dataset.z == 3) &&
+        selector.dataset.y == y
+      ) {
+        alert("Orange won!");
+        reset();
       }
     }
   }
 }, 500);
 
-document.getElementById("resetButton").onclick = function () {
-  for (var y = 1; y <= my; y++) {
-    for (var x = 1; x <= mx; x++) {
-      let c = document.querySelector(
-        "#c[data-x='" + x + "'][data-y='" + y + "']"
-      );
-      c.dataset.z = 0;
-      c.className = "bla";
-      blueturn = true;
-      orangeturn = false;
-    }
-  }
-};
+document.getElementById("resetButton").onclick = reset;
 
-bc(mx, my);
+generator(x, y);
