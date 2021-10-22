@@ -1,0 +1,36 @@
+board {
+  display: grid;
+  width: 50%;
+  max-height: fit-content;
+  overflow: hidden;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to top, #004cff, #ff9900);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+cross {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  position: relative;
+}
+.black {
+  content: url("../images/plusBLACK.svg");
+}
+.blue {
+  content: url("../images/plusBLUE.svg");
+}
+.orange {
+  content: url("../images/plusORANGE.svg");
+}
+.both {
+  content: url("../images/plusBOTH.svg");
+}
+.utility {
+  width: fit-content;
+  height: fit-content;
+}
