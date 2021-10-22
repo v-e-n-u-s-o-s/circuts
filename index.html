@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Circuts - game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../stylesheets/main.css" />
+    <script src="../javascripts/board_size_sender.js"></script>
+    <script src="../javascripts/animation.js"></script>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  </head>
+  <body id="body">
+    <div class="container">
+      <div class="cover">
+        <div class="front"><h1>obwody</h1></div>
+        <div class="back">
+          <div class="autorzy"><h1>autorzy</h1></div>
+          <div class="Back-rules_menu"><h1>Zasady</h1></div>
+          <div class="Back-Pick-map_menu"><h1>Wybierz mapę</h1></div>
+          <div class="Back-Custom-map_menu">
+            <h1>Zasady tworzenia mapy</h1>
+            <p>1. Maksymalna szarokość planszy wynosi: 35,</p>
+            <p>2. Maksymalna wysokość planszy wynosi: 35,</p>
+            <p>3. Wysokość nie może być większa od szerokości,</p>
+            <p>
+              4. Gdy trzeci warunek nie zostanie spełniony, wartości zostaną
+              wyrównane,
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="menu">
+        <h1>menu</h1>
+        <center>
+          <div class="buttons">
+            <button
+              onclick="change('menu', 'Single-player_menu'), cover_change('autorzy', 'Back-rules_menu')"
+            >
+              Single-player
+            </button>
+            <button
+              onclick="change('menu', 'Multi-player_menu'), cover_change('autorzy', 'Back-rules_menu')"
+            >
+              Mulit-player
+            </button>
+          </div>
+        </center>
+      </div>
+
+      <div class="Single-player_menu">
+        <h1>Single-player</h1>
+        <center>
+          <div class="buttons">
+            <button
+              onclick="change('Single-player_menu', 'Pick-map_menu') ,cover_change('Back-rules_menu', 'Back-Pick-map_menu')"
+            >
+              Wybierz mapę
+            </button>
+            <button
+              onclick="change('Single-player_menu', 'Custom-map_menu') ,cover_change('Back-rules_menu', 'Back-Custom-map_menu')"
+            >
+              Własna mapa
+            </button>
+            <button
+              onclick="change('Single-player_menu', 'menu'),cover_change('Back-rules_menu', 'autorzy') "
+            >
+              powrót
+            </button>
+          </div>
+        </center>
+      </div>
+
+      <div class="Multi-player_menu">
+        <h1>Multi-player</h1>
+        <center>
+          <div class="buttons">
+            <button>..............</button>
+            <button
+              onclick="change('Multi-player_menu', 'menu',cover_change('Back-rules_menu', 'autorzy') )"
+            >
+              powrót
+            </button>
+          </div>
+        </center>
+      </div>
+
+      <div class="Pick-map_menu">
+        <h1>Wybierz mapę</h1>
+        <center>
+          <div class="buttons">
+            <button>..............</button>
+            <button>..............</button>
+            <button
+              onclick="change('Pick-map_menu', 'Single-player_menu'),cover_change('Back-Pick-map_menu', 'Back-rules_menu') "
+            >
+              powrót
+            </button>
+          </div>
+        </center>
+      </div>
+
+      <div class="Custom-map_menu">
+        <h1>Własna mapa</h1>
+        <center>
+          <div class="buttons">
+            <input type="number" placeholder="szerokość" id="width" />
+            <input type="number" placeholder="wysokość" id="height" />
+
+            <button onclick="board_size_sender()" id="submit">sztok</button>
+            <button
+              onclick="change('Custom-map_menu', 'Single-player_menu' ,cover_change('Back-Custom-map_menu', 'Back-rules_menu'))"
+            >
+              powrót
+            </button>
+          </div>
+        </center>
+      </div>
+    </div>
+  </body>
+</html>
