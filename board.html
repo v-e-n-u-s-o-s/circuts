@@ -1,18 +1,21 @@
 <html lang="en">
-  <head>
-    <title>Circuts</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="../stylesheets/main.css" />
-    <link rel="stylesheet" href="../stylesheets/board.css" />
-    <script src="../javascripts/board.js" defer></script>
-    <script src="../javascripts/move.js" defer></script>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
-  </head>
-  <body id="body">
-    <div class="b" id="b"></div>
-    <p id="turn">Blue starts the game</p>
-    <div class="resetButton" id="resetButton">Reset board</div>
-  </body>
+
+<head>
+  <title>Circuts</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../stylesheets/board.css" />
+</head>
+
+<body id="body">
+  <script type="module" src="../javascripts/modules/board_assets.js"></script>
+  <script type="module" src="../javascripts/modules/cross_validator.js"></script>
+  <script type="module" src="../javascripts/modules/move_info.js"></script>
+  <script type="module" src="../javascripts/main.js" defer></script>
+  <board></board>
+  <p id="turn">Blue starts the game</p>
+  <div class="utility" id="wall" style="background-color: nones">Wall</div>
+  <div class="resetButton" id="resetButton">Reset board</div>
+</body>
+
 </html>

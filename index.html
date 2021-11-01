@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../stylesheets/main.css" />
-    <script src="../javascripts/size_passer.js"></script>
+    <script src="../javascripts/board_size_sender.js"></script>
     <script src="../javascripts/animation.js"></script>
     <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
   </head>
@@ -107,7 +107,7 @@
             <input type="number" placeholder="szerokość" id="width" />
             <input type="number" placeholder="wysokość" id="height" />
 
-            <button onclick="board_reporter()" id="submit">sztok</button>
+            <button onclick="board_size_sender()" id="submit">sztok</button>
             <button
               onclick="change('Custom-map_menu', 'Single-player_menu' ,cover_change('Back-Custom-map_menu', 'Back-rules_menu'))"
             >
